@@ -6,3 +6,8 @@ smartphone_dataset_1M.csv
 # Python runtime artifacts
 __pycache__/
 *.py[cod]
+
+# Generated plots (reproducible from notebooks/scripts; avoid binary merge conflicts)
+inspection_data/columns/*.png
+inspection_data/overview/*.png
+modeling/outputs/plots/*.png
