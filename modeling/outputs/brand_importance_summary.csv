@@ -1,0 +1,3 @@
+model,brand_importance_sum,total_importance,brand_importance_ratio
+LightGBM_gain (price_eur),75629363.81030273,2307920008.053711,0.03276949094699415
+Random Forest (price_eur),0.026455401509016905,0.9999999999999999,0.02645540150901691

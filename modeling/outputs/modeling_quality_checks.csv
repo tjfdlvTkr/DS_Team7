@@ -1,0 +1,11 @@
+check,status,evidence
+uses_github_root_content_folder,PASS,/Users/shinjunha/Documents/Gachon_Homework/Data_Science/Term_Project_git/DS_git/DS_Team7/content
+regression_model_beats_median_baseline,PASS,"best=LightGBM log_price_eur, MAE=51.73, MASE=0.463"
+five_fold_cv_available,PASS,"folds=5, rows=40"
+three_market_segments_created,PASS,"[{'segment': 'Entry', 'count': 1026}, {'segment': 'Mid-range', 'count': 825}, {'segment': 'Flagship', 'count': 262}]"
+value_outliers_are_cheaper_than_non_outliers,PASS,"outlier=121.61, non_outlier=312.97"
+value_outliers_have_higher_ppr,PASS,"outlier=0.328, non_outlier=0.148"
+value_outliers_are_under_expected_market_price,PASS,"avg_gap=85.16, avg_discount=37.9%"
+recommendations_respect_budget,PASS,"[{'scenario': 1, 'budget_eur': 200, 'max_price_eur': 71.5, 'all_within_budget': True}, {'scenario': 2, 'budget_eur': 400, 'max_price_eur': 153.989, 'all_within_budget': True}, {'scenario': 3, 'budget_eur': 800, 'max_price_eur': 223.1907, 'all_within_budget': True}, {'scenario': 4, 'budget_eur': 150, 'max_price_eur': 71.5, 'all_within_budget': True}]"
+recommendations_sorted_by_ppr,PASS,"[{'scenario': 1, 'is_performance_to_price_ratio_descending': True, 'top_performance_to_price_ratio': 0.592349660831454}, {'scenario': 2, 'is_performance_to_price_ratio_descending': True, 'top_performance_to_price_ratio': 0.3724345129725555}, {'scenario': 3, 'is_performance_to_price_ratio_descending': True, 'top_performance_to_price_ratio': 0.2917312326956047}, {'scenario': 4, 'is_performance_to_price_ratio_descending': True, 'top_performance_to_price_ratio': 0.592349660831454}]"
+business_price_guides_created,PASS,"[{'scenario': 'B2B_midrange_launch', 'brand': 'Samsung', 'predicted_price_eur': 357.47746788574614, 'guidance': 'planned_price_is_above_model_guideline'}, {'scenario': 'B2B_flagship_launch', 'brand': 'Apple', 'predicted_price_eur': 604.4218864228858, 'guidance': 'planned_price_is_above_model_guideline'}, {'scenario': 'B2B_value_launch', 'brand': 'Xiaomi', 'predicted_price_eur': 293.8747720355776, 'guidance': 'planned_price_is_near_model_guideline'}]"

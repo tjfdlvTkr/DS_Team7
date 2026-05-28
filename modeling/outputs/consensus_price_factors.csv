@@ -1,0 +1,10 @@
+feature,avg_rank,model_count
+num__resolution_total_px,1.0,2
+num__resolution_width_px,2.5,2
+num__storage_gb,2.5,2
+num__body_weight_g,4.0,2
+num__battery_per_weight,5.5,2
+num__body_width_mm,6.5,2
+num__screen_to_body_pct,6.5,2
+num__body_thickness_mm,9.0,2
+num__sensor_count,10.0,2

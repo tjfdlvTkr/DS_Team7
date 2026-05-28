@@ -1,0 +1,5 @@
+file,rows,cols,null_total,object_cols
+gsm_processed_all(price_prediction).csv,6251,95,0,0
+gsm_processed(price_prediction).csv,6251,58,19186,5
+gsm_processed_all(recommendation).csv,2113,86,0,0
+gsm_processed(recommendation).csv,2113,53,1684,8

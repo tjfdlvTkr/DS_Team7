@@ -1,0 +1,189 @@
+model,feature,importance
+LightGBM_gain (price_eur),num__resolution_total_px,403166470.7060547
+LightGBM_gain (price_eur),num__storage_gb,288874661.5756836
+LightGBM_gain (price_eur),num__resolution_width_px,213276753.7121582
+LightGBM_gain (price_eur),num__body_weight_g,113801620.92651367
+LightGBM_gain (price_eur),num__screen_to_body_pct,97330140.3840332
+LightGBM_gain (price_eur),num__battery_per_weight,97202117.81835938
+LightGBM_gain (price_eur),num__body_width_mm,73288930.05297852
+LightGBM_gain (price_eur),num__body_thickness_mm,67918001.31665039
+LightGBM_gain (price_eur),num__sensor_count,65538363.576171875
+LightGBM_gain (price_eur),num__ppi_reported,64771485.05566406
+LightGBM_gain (price_eur),num__launch_year,52561809.43432617
+LightGBM_gain (price_eur),num__launch_month,42947807.70703125
+LightGBM_gain (price_eur),num__has_nfc,36413365.31298828
+LightGBM_gain (price_eur),num__has_barometer,33512737.090820312
+LightGBM_gain (price_eur),num__main_camera_max_mp,32702320.896972656
+LightGBM_gain (price_eur),num__display_size_in,31214790.311523438
+LightGBM_gain (price_eur),num__body_height_mm,30890875.875732422
+LightGBM_gain (price_eur),num__has_ois,30320180.692382812
+LightGBM_gain (price_eur),num__ppi_calculated,30019620.368164062
+LightGBM_gain (price_eur),num__battery_capacity_mah,29908223.334960938
+LightGBM_gain (price_eur),num__battery_per_inch,29494567.11767578
+LightGBM_gain (price_eur),num__ram_gb,28819221.82836914
+LightGBM_gain (price_eur),cat__display_panel_IPS LCD,28209916.256835938
+LightGBM_gain (price_eur),cat__brand_group_Apple,28006503.93017578
+LightGBM_gain (price_eur),cat__brand_group_Other,25035090.477294922
+LightGBM_gain (price_eur),num__aspect_ratio,21572010.284179688
+LightGBM_gain (price_eur),num__has_gyro,21507150.750976562
+LightGBM_gain (price_eur),num__has_radio,21162505.575439453
+LightGBM_gain (price_eur),cat__display_panel_Other,19577198.931152344
+LightGBM_gain (price_eur),num__os_version,19005456.14453125
+LightGBM_gain (price_eur),num__resolution_height_px,18757582.842773438
+LightGBM_gain (price_eur),cat__display_panel_OLED,18472578.760742188
+LightGBM_gain (price_eur),cat__os_family_Unknown,18124164.697265625
+LightGBM_gain (price_eur),num__selfie_camera_max_mp,17574803.715576172
+LightGBM_gain (price_eur),num__network_generation,15714636.971435547
+LightGBM_gain (price_eur),num__has_compass,12473561.559570312
+LightGBM_gain (price_eur),num__fast_charging_w,11020875.264892578
+LightGBM_gain (price_eur),num__has_card_slot,9733442.684082031
+LightGBM_gain (price_eur),cat__display_panel_AMOLED,9695509.444335938
+LightGBM_gain (price_eur),cat__display_panel_LCD/TFT,8373126.275878906
+LightGBM_gain (price_eur),num__is_removable_battery,8335270.516113281
+LightGBM_gain (price_eur),num__phone_age,7323582.5185546875
+LightGBM_gain (price_eur),cat__brand_group_Xiaomi,6171290.895263672
+LightGBM_gain (price_eur),num__main_camera_count,5023621.0625
+LightGBM_gain (price_eur),cat__os_family_Windows,4878088.388183594
+LightGBM_gain (price_eur),cat__brand_group_Asus,4480360.5634765625
+LightGBM_gain (price_eur),num__has_gps,4014369.5380859375
+LightGBM_gain (price_eur),num__is_premium_brand,3994363.48046875
+LightGBM_gain (price_eur),cat__launch_status_group_Available,3595010.6020507812
+LightGBM_gain (price_eur),cat__launch_status_group_Coming soon,3571959.7509765625
+LightGBM_gain (price_eur),num__has_touchscreen,3142749.02734375
+LightGBM_gain (price_eur),num__has_usb,2593760.904296875
+LightGBM_gain (price_eur),cat__brand_group_vivo,2585563.2275390625
+LightGBM_gain (price_eur),cat__launch_status_group_Discontinued,2583876.8149414062
+LightGBM_gain (price_eur),cat__brand_group_Samsung,2573570.1420898438
+LightGBM_gain (price_eur),num__has_telephoto,2291833.798828125
+LightGBM_gain (price_eur),num__ppi,2233557.3520507812
+LightGBM_gain (price_eur),num__has_3_5mm_jack,1945005.115234375
+LightGBM_gain (price_eur),cat__brand_group_Oppo,1699958.6538085938
+LightGBM_gain (price_eur),cat__battery_type_Li-Po,1654824.6538085938
+LightGBM_gain (price_eur),cat__os_family_iOS,1447118.359375
+LightGBM_gain (price_eur),num__has_fingerprint,1370383.7392578125
+LightGBM_gain (price_eur),num__has_proximity,1322726.0786132812
+LightGBM_gain (price_eur),cat__brand_group_HTC,1242633.9248046875
+LightGBM_gain (price_eur),num__has_bluetooth,1232605.89453125
+LightGBM_gain (price_eur),cat__brand_group_ZTE,914394.8310546875
+LightGBM_gain (price_eur),cat__brand_group_LG,788655.2485351562
+LightGBM_gain (price_eur),num__has_accelerometer,752197.4990234375
+LightGBM_gain (price_eur),cat__brand_group_Motorola,683492.4721679688
+LightGBM_gain (price_eur),cat__os_family_BlackBerry,656675.4924316406
+LightGBM_gain (price_eur),cat__os_family_Symbian,609474.0
+LightGBM_gain (price_eur),num__selfie_camera_count,537093.236328125
+LightGBM_gain (price_eur),num__has_5g,474320.3203125
+LightGBM_gain (price_eur),cat__battery_type_Li-Ion,464061.189453125
+LightGBM_gain (price_eur),cat__brand_group_Sony,442547.4655761719
+LightGBM_gain (price_eur),cat__brand_group_Lenovo,297222.2685546875
+LightGBM_gain (price_eur),cat__brand_group_Realme,271002.9509277344
+LightGBM_gain (price_eur),num__has_wifi,239843.58154296875
+LightGBM_gain (price_eur),cat__os_family_Other,237306.9296875
+LightGBM_gain (price_eur),cat__brand_group_Honor,210961.60864257812
+LightGBM_gain (price_eur),cat__os_family_Android,201010.6962890625
+LightGBM_gain (price_eur),num__has_face_id,183130.64794921875
+LightGBM_gain (price_eur),cat__display_panel_Monochrome,135795.3095703125
+LightGBM_gain (price_eur),num__has_ultrawide,135731.1806640625
+LightGBM_gain (price_eur),cat__brand_group_Huawei,125610.2421875
+LightGBM_gain (price_eur),cat__battery_type_Unknown,71133.400390625
+LightGBM_gain (price_eur),cat__brand_group_alcatel,57769.3896484375
+LightGBM_gain (price_eur),cat__launch_status_group_Cancelled,44260.080078125
+LightGBM_gain (price_eur),cat__brand_group_Nokia,42735.5185546875
+LightGBM_gain (price_eur),num__has_4g_or_more,27930.07958984375
+LightGBM_gain (price_eur),cat__os_family_Linux,17387.75
+LightGBM_gain (price_eur),cat__brand_group_Google,0.0
+LightGBM_gain (price_eur),cat__brand_group_OnePlus,0.0
+LightGBM_gain (price_eur),cat__brand_group_Sony Ericsson,0.0
+Random Forest (price_eur),num__resolution_total_px,0.16469263867843326
+Random Forest (price_eur),num__resolution_width_px,0.12062833525382516
+Random Forest (price_eur),num__storage_gb,0.11436901121345189
+Random Forest (price_eur),num__body_weight_g,0.05308668124754229
+Random Forest (price_eur),num__battery_per_weight,0.042002753440747956
+Random Forest (price_eur),num__body_width_mm,0.03449854459663461
+Random Forest (price_eur),num__aspect_ratio,0.03244232234263313
+Random Forest (price_eur),num__screen_to_body_pct,0.030188668561166133
+Random Forest (price_eur),num__ppi_calculated,0.02612707542000143
+Random Forest (price_eur),num__body_thickness_mm,0.025805696739260708
+Random Forest (price_eur),num__sensor_count,0.020495094092988584
+Random Forest (price_eur),num__body_height_mm,0.019226180789894527
+Random Forest (price_eur),cat__os_family_Unknown,0.015625947606983815
+Random Forest (price_eur),cat__display_panel_IPS LCD,0.01465326640340351
+Random Forest (price_eur),num__has_3_5mm_jack,0.014240461519979713
+Random Forest (price_eur),num__battery_per_inch,0.01393463227635171
+Random Forest (price_eur),num__launch_year,0.013280368410143384
+Random Forest (price_eur),num__display_size_in,0.01273165022993143
+Random Forest (price_eur),cat__brand_group_Apple,0.012505007109960414
+Random Forest (price_eur),num__ppi,0.012369788129916301
+Random Forest (price_eur),num__launch_month,0.012182046324471587
+Random Forest (price_eur),num__phone_age,0.011868605769270209
+Random Forest (price_eur),num__selfie_camera_max_mp,0.011584455408893957
+Random Forest (price_eur),num__ppi_reported,0.011107296565146321
+Random Forest (price_eur),num__has_gyro,0.010213767074044483
+Random Forest (price_eur),num__resolution_height_px,0.009463665986648368
+Random Forest (price_eur),num__main_camera_max_mp,0.008707317519094234
+Random Forest (price_eur),cat__display_panel_OLED,0.008676228246479836
+Random Forest (price_eur),cat__display_panel_Other,0.008233375712189388
+Random Forest (price_eur),num__has_barometer,0.00799386303016024
+Random Forest (price_eur),num__battery_capacity_mah,0.007875868258816471
+Random Forest (price_eur),num__os_version,0.007392394914390579
+Random Forest (price_eur),num__ram_gb,0.007206083856829309
+Random Forest (price_eur),num__has_compass,0.007152408825798401
+Random Forest (price_eur),num__has_ois,0.00600496126613271
+Random Forest (price_eur),num__has_radio,0.004777156100996499
+Random Forest (price_eur),num__has_card_slot,0.004753405600318268
+Random Forest (price_eur),cat__brand_group_Other,0.0046125828603923915
+Random Forest (price_eur),num__has_nfc,0.003990595436534288
+Random Forest (price_eur),num__is_removable_battery,0.003969056747640234
+Random Forest (price_eur),num__network_generation,0.00393006804645671
+Random Forest (price_eur),cat__display_panel_AMOLED,0.0038277893200612152
+Random Forest (price_eur),cat__launch_status_group_Available,0.0036947332595856056
+Random Forest (price_eur),num__has_fingerprint,0.0029168357607905647
+Random Forest (price_eur),cat__launch_status_group_Coming soon,0.0029156728061127016
+Random Forest (price_eur),num__fast_charging_w,0.002846196785571974
+Random Forest (price_eur),num__main_camera_count,0.002430318560080824
+Random Forest (price_eur),num__has_telephoto,0.0022568407746971883
+Random Forest (price_eur),cat__brand_group_Asus,0.00202294464582045
+Random Forest (price_eur),num__selfie_camera_count,0.0017516286668334453
+Random Forest (price_eur),cat__brand_group_Samsung,0.001355696579492338
+Random Forest (price_eur),num__is_premium_brand,0.0013334127166359437
+Random Forest (price_eur),num__has_gps,0.0013110071224948015
+Random Forest (price_eur),cat__launch_status_group_Discontinued,0.0012027486034244654
+Random Forest (price_eur),cat__brand_group_Xiaomi,0.001072848644281425
+Random Forest (price_eur),cat__brand_group_vivo,0.0010513638990114118
+Random Forest (price_eur),num__has_5g,0.0008866219009602446
+Random Forest (price_eur),cat__display_panel_LCD/TFT,0.0008673750956914731
+Random Forest (price_eur),cat__battery_type_Li-Ion,0.0008518439981770865
+Random Forest (price_eur),cat__battery_type_Li-Po,0.0007990163338750653
+Random Forest (price_eur),cat__os_family_Symbian,0.000755118480323413
+Random Forest (price_eur),cat__os_family_Windows,0.0007280631454031403
+Random Forest (price_eur),cat__brand_group_LG,0.0007028608183865808
+Random Forest (price_eur),num__has_wifi,0.0006962008629157068
+Random Forest (price_eur),num__has_touchscreen,0.0006625519160610517
+Random Forest (price_eur),num__has_face_id,0.0006253045810907762
+Random Forest (price_eur),cat__brand_group_Oppo,0.000615891810792426
+Random Forest (price_eur),cat__brand_group_Huawei,0.0005842123533967593
+Random Forest (price_eur),cat__brand_group_ZTE,0.0004623682217987407
+Random Forest (price_eur),cat__brand_group_HTC,0.00044241403282552043
+Random Forest (price_eur),num__has_4g_or_more,0.00040560492280957035
+Random Forest (price_eur),num__has_usb,0.00039674738916773263
+Random Forest (price_eur),cat__os_family_iOS,0.0003144453769747278
+Random Forest (price_eur),cat__os_family_Android,0.0003089036390996995
+Random Forest (price_eur),num__has_proximity,0.00029987026054341387
+Random Forest (price_eur),num__has_ultrawide,0.00026010105192978897
+Random Forest (price_eur),num__has_accelerometer,0.00025886815492290403
+Random Forest (price_eur),cat__brand_group_Motorola,0.0002557963852019851
+Random Forest (price_eur),cat__brand_group_Nokia,0.00018448192391012919
+Random Forest (price_eur),cat__brand_group_Lenovo,0.0001737143122683097
+Random Forest (price_eur),cat__brand_group_alcatel,0.0001725351934097584
+Random Forest (price_eur),cat__os_family_BlackBerry,0.00010629027997995739
+Random Forest (price_eur),num__has_bluetooth,0.00010313551877031897
+Random Forest (price_eur),cat__os_family_Other,7.498767866952553e-05
+Random Forest (price_eur),cat__launch_status_group_Cancelled,7.346902997892356e-05
+Random Forest (price_eur),cat__os_family_Linux,6.500537819478473e-05
+Random Forest (price_eur),cat__brand_group_Realme,6.114054781653501e-05
+Random Forest (price_eur),cat__brand_group_Sony,5.722489790178951e-05
+Random Forest (price_eur),cat__brand_group_Honor,3.97639852884379e-05
+Random Forest (price_eur),cat__battery_type_Unknown,3.409293744707597e-05
+Random Forest (price_eur),cat__brand_group_OnePlus,2.9564498582865383e-05
+Random Forest (price_eur),cat__brand_group_Sony Ericsson,2.7313993411186287e-05
+Random Forest (price_eur),cat__brand_group_Google,2.5674795067449423e-05
+Random Forest (price_eur),cat__display_panel_Monochrome,2.0585381063809965e-06

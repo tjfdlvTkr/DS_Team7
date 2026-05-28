@@ -1,1 +1,8 @@
 smartphone_dataset_1M.csv
+
+# Local OS/editor artifacts
+.DS_Store
+
+# Python runtime artifacts
+__pycache__/
+*.py[cod]

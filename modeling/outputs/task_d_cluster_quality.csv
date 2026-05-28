@@ -1,0 +1,2 @@
+algorithm,n_samples,value,davies_bouldin
+KMeans,2113,0.26604011396537,1.2877934312165902
