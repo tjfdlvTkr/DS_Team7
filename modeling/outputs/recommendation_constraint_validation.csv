@@ -1,0 +1,5 @@
+scenario,scenario_label,budget_eur,row_count,max_price_eur,all_within_budget,is_value_score_descending,is_performance_to_price_ratio_descending,top_value_score,top_performance_to_price_ratio
+1,학생 예산,200,10,71.5,True,True,True,59.2349660831454,0.592349660831454
+2,일반 직장인,400,10,153.989,True,True,True,37.243451297255554,0.37243451297255553
+3,프리미엄 유저,800,10,223.1907,True,True,True,29.17312326956047,0.29173123269560475
+4,입문자/세컨드폰,150,10,71.5,True,True,True,59.2349660831454,0.592349660831454

@@ -1,0 +1,25 @@
+source,requirement,evidence,status
+Spec,team project,Team 7 repository and PDF team list,PASS
+Spec,proposal submitted,Term_Project_Proposal.pdf / DS_Proposal_한글화.pdf,PASS
+Spec,proposal includes dataset/objective/algorithm types,proposal docs + modeling docs + dataset-change alignment note,PASS_WITH_NOTE
+Spec,end-to-end Big Data process,"Preprocessing, inspection, modeling, evaluation outputs",PASS
+Spec,>=10 records and features,"raw GSM 10,679 x 86; processed data >2,000 rows and >50 columns",PASS
+Spec,dirty data,"missing values, mixed-unit text specs, price strings, duplicate/missing inspection",PASS
+Spec,numerical+categorical,numeric hardware/price plus brand/status/panel/battery/os categorical features,PASS
+Spec,scaling and encoding,OneHotEncoder + StandardScaler in preprocessing; StandardScaler in modeling,PASS
+Spec,2 of regression/classification/clustering,Regression + Clustering,PASS
+Spec,k-fold CV for classification,no classification model; regression 5-fold CV added as extra validation,NOT_APPLICABLE_WITH_EXTRA
+Spec,PPT presentation,presentation/DS_Team7_GSM_Final_Presentation.pptx + outline doc,PASS
+Spec,separate writeup behind PPT,"handoff, evaluation guide, compliance audit docs",PASS
+Spec,source code with detailed comments,"run_modeling.py, two_way_solution.py, GSM modeling notebook",PASS
+Spec,external library/method explanations,04_EXTERNAL_LIBRARY_METHOD_EXPLANATIONS.md,PASS
+Spec,outputs including plots and execution results,outputs CSV/PNG/model artifacts,PASS
+Spec,dataset used,content/*.csv included,PASS
+Spec,teamwork task assignment and contribution percentage,template added; actual percentages required,TEAM_INPUT_REQUIRED
+Spec,learning writeup for each member,template added; each member must fill,TEAM_INPUT_REQUIRED
+Spec,cite Internet/blog/Kaggle/GitHub sources,Kaggle GSMArena Mobile Phone Devices source and library docs listed,PASS_WITH_SOURCE_CHECK
+Proposal,기업 가격 가이드,best_price_regressor + two_way_solution.py,PASS
+Proposal,소비자 추천,budget constraint + PPR rank optimization,PASS
+Proposal,브랜드 프리미엄,importance + adjusted residual premium,PASS
+Proposal,가성비 이상치,Z-score + IsolationForest + market underpricing,PASS
+Proposal,데이터셋 변경 정합성,12_DATASET_CHANGE_AND_PROPOSAL_ALIGNMENT.md explains why GSM replaces the proposal-time synthetic dataset,PASS_WITH_NOTE

@@ -1,0 +1,21 @@
+model,feature,importance,driver_type
+LightGBM_gain (price_eur),num__resolution_total_px,403166470.7060547,hardware_or_spec
+LightGBM_gain (price_eur),num__storage_gb,288874661.5756836,hardware_or_spec
+LightGBM_gain (price_eur),num__resolution_width_px,213276753.7121582,hardware_or_spec
+LightGBM_gain (price_eur),num__body_weight_g,113801620.92651367,hardware_or_spec
+LightGBM_gain (price_eur),num__screen_to_body_pct,97330140.3840332,hardware_or_spec
+LightGBM_gain (price_eur),num__battery_per_weight,97202117.81835938,hardware_or_spec
+LightGBM_gain (price_eur),num__body_width_mm,73288930.05297852,hardware_or_spec
+LightGBM_gain (price_eur),num__body_thickness_mm,67918001.31665039,hardware_or_spec
+LightGBM_gain (price_eur),num__sensor_count,65538363.576171875,hardware_or_spec
+LightGBM_gain (price_eur),num__ppi_reported,64771485.05566406,hardware_or_spec
+LightGBM_gain (price_eur),num__launch_year,52561809.43432617,hardware_or_spec
+LightGBM_gain (price_eur),num__launch_month,42947807.70703125,hardware_or_spec
+LightGBM_gain (price_eur),num__has_nfc,36413365.31298828,hardware_or_spec
+LightGBM_gain (price_eur),num__has_barometer,33512737.090820312,hardware_or_spec
+LightGBM_gain (price_eur),num__main_camera_max_mp,32702320.896972656,hardware_or_spec
+LightGBM_gain (price_eur),num__display_size_in,31214790.311523438,hardware_or_spec
+LightGBM_gain (price_eur),num__body_height_mm,30890875.875732422,hardware_or_spec
+LightGBM_gain (price_eur),num__has_ois,30320180.692382812,hardware_or_spec
+LightGBM_gain (price_eur),num__ppi_calculated,30019620.368164062,hardware_or_spec
+LightGBM_gain (price_eur),num__battery_capacity_mah,29908223.334960938,hardware_or_spec

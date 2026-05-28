@@ -1,0 +1,3 @@
+algorithm,n_samples,silhouette,davies_bouldin
+KMeans,2113,0.26604011396537,1.2877934312165902
+Agglomerative_Ward,2113,0.24467121289666327,1.3566137844002835

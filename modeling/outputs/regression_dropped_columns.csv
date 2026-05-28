@@ -1,0 +1,9 @@
+column,present_in_price_model
+price_tier,False
+value_score,False
+spec_score_0_100,False
+price_per_ram_gb,False
+price_per_storage_gb,False
+battery_per_eur,False
+oem,False
+model,False

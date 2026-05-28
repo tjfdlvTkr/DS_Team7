@@ -1,0 +1,3 @@
+item,pdf_requirement,why_remaining,current_support_file,required_owner_action
+teamwork contribution percentage for each member,Teamwork data: task assignment and contribution percentage for each member,requires actual team agreement; cannot be truthfully inferred from files,modeling/docs/08_TEAMWORK_CONTRIBUTION_AND_LEARNING_TEMPLATE.md,Fill exact percentages that sum to 100% before final submission
+short learning writeup for each member,A short writeup on what you have learned for each member of the team,must be written or confirmed by each member personally,modeling/docs/08_TEAMWORK_CONTRIBUTION_AND_LEARNING_TEMPLATE.md,Each member completes their own learning/difficulty/reflection section before final submission
