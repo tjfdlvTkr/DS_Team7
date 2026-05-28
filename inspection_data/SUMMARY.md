@@ -1,6 +1,6 @@
 ## GSM Inspection Summary
 
-- input: `/Users/shinjunha/Documents/Gachon_Homework/Data_Science/Term_Project_git/DS_git/DS_Team7/content/gsm.csv`
+- input: `c:\Users\hjw\Desktop\사이버캠퍼스 파일\3-1학기\데이터과학\DS_Team7\content\gsm.csv`
 - shape: 10679 rows x 86 cols
 - output: image-only (no csv)
 - key visuals:
