@@ -1,0 +1,23 @@
+{
+  "device_plan": {
+    "requested": "gpu",
+    "use_gpu": false,
+    "lightgbm_device": "cpu",
+    "xgboost_device": "cpu",
+    "catboost_task_type": "CPU",
+    "notes": [
+      "GPU requested but CUDA not detected; falling back to CPU"
+    ]
+  },
+  "target_mode": "log_price_eur",
+  "n_train": 5000,
+  "n_test": 1251,
+  "n_features": 94,
+  "base_models": [
+    "ridge",
+    "random_forest",
+    "lightgbm",
+    "xgboost",
+    "catboost"
+  ]
+}

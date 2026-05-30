@@ -6,3 +6,9 @@ smartphone_dataset_1M.csv
 # Python runtime artifacts
 __pycache__/
 *.py[cod]
+
+# Personal
+/Regression/guidance.md
+
+# too big to commit
+/Regression/models/ensemble_price_regressor.pkl
