@@ -1,4 +1,5 @@
-"""GPU availability checks for tree boosting libraries."""
+# Module: gpu
+# Purpose: Resolve whether ensemble base models should run on CPU or GPU.
 
 from __future__ import annotations
 
@@ -6,6 +7,7 @@ import os
 from dataclasses import dataclass
 
 
+# Immutable device plan passed into LightGBM / XGBoost / CatBoost factories.
 @dataclass(frozen=True)
 class DevicePlan:
     requested: str
@@ -16,6 +18,7 @@ class DevicePlan:
     notes: list[str]
 
 
+# Best-effort CUDA detection via torch or cupy without hard-failing the pipeline.
 def _cuda_visible() -> bool:
     try:
         import torch
@@ -31,8 +34,8 @@ def _cuda_visible() -> bool:
         return False
 
 
+# Map CLI device flag (auto/gpu/cpu) to a concrete DevicePlan for all boosters.
 def resolve_device(requested: str = "auto") -> DevicePlan:
-    """Resolve device plan: auto | gpu | cpu."""
     requested = requested.lower().strip()
     if requested not in {"auto", "gpu", "cpu"}:
         raise ValueError("device must be one of: auto, gpu, cpu")
@@ -51,6 +54,5 @@ def resolve_device(requested: str = "auto") -> DevicePlan:
         return DevicePlan("auto", False, "cpu", "cpu", "CPU", notes)
 
     notes.append("GPU mode enabled for LightGBM / XGBoost / CatBoost when installed")
-    # Respect user GPU selection (e.g. RTX 5060 Ti); default device 0.
     os.environ.setdefault("CUDA_VISIBLE_DEVICES", "0")
     return DevicePlan(requested if requested != "auto" else "gpu", True, "gpu", "cuda", "GPU", notes)
