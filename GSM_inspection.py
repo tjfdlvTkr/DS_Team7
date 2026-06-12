@@ -1,3 +1,7 @@
+# Module: GSM_inspection
+# Purpose: Build human-readable EDA image outputs from the raw gsm.csv file.
+# Outputs: inspection_data/overview/*.png, inspection_data/columns/*.png, and two markdown summaries.
+
 import argparse
 import re
 from pathlib import Path
@@ -7,10 +11,12 @@ import numpy as np
 import pandas as pd
 
 
+# Default input/output paths relative to the project root.
 DEFAULT_INPUT = Path(__file__).parent / "content" / "gsm.csv"
 DEFAULT_OUTPUT = Path(__file__).parent / "inspection_data"
 
 
+# Try multiple encodings so Korean Windows / Colab exports can be read safely.
 def load_csv_robust(path: Path) -> pd.DataFrame:
     encodings = ["utf-8-sig", "utf-8", "cp949", "latin1"]
     for enc in encodings:
@@ -21,6 +27,7 @@ def load_csv_robust(path: Path) -> pd.DataFrame:
     return pd.read_csv(path, low_memory=False)
 
 
+# Normalize placeholder strings (e.g. "-", "N/A") to NaN for inspection statistics.
 def normalize_missing(df: pd.DataFrame) -> pd.DataFrame:
     missing_tokens = {
         "",
@@ -44,11 +51,13 @@ def normalize_missing(df: pd.DataFrame) -> pd.DataFrame:
     return out
 
 
+# Sanitize column names so they are safe as PNG filenames.
 def clean_name(name: str) -> str:
     cleaned = re.sub(r"[^\w\-.]", "_", name)
     return cleaned[:120]
 
 
+# Repair common broken currency tokens found in misc_price text fields.
 def clean_mojibake(text: str) -> str:
     if pd.isna(text):
         return np.nan
@@ -65,10 +74,12 @@ def clean_mojibake(text: str) -> str:
     return re.sub(r"\s+", " ", s).strip()
 
 
+# Parse misc_price text into a single EUR value for overview price charts only.
 def parse_price_eur_from_misc(text: str) -> float:
     if pd.isna(text):
         return np.nan
     s = clean_mojibake(text).replace(",", "")
+    # Fixed FX rates match the preprocessing notebook: EUR first, then USD/GBP/INR.
     currency_patterns = [
         (1.0, [r"([0-9]+(?:\.[0-9]+)?)\s*EUR\b", r"EUR\s*([0-9]+(?:\.[0-9]+)?)"]),
         (0.93, [r"\$\s*([0-9]+(?:\.[0-9]+)?)", r"([0-9]+(?:\.[0-9]+)?)\s*USD\b"]),
@@ -83,6 +94,7 @@ def parse_price_eur_from_misc(text: str) -> float:
     return np.nan
 
 
+# Save the current matplotlib figure and close it to avoid memory growth.
 def save_fig(path: Path) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
     plt.tight_layout()
@@ -90,6 +102,7 @@ def save_fig(path: Path) -> None:
     plt.close()
 
 
+# Overview chart: missing ratio for every column, sorted descending.
 def plot_overview_missing(df: pd.DataFrame, out_path: Path) -> None:
     n = len(df)
     miss_ratio = (df.isna().sum() / n).sort_values(ascending=False)
@@ -102,6 +115,7 @@ def plot_overview_missing(df: pd.DataFrame, out_path: Path) -> None:
     save_fig(out_path)
 
 
+# Overview chart: scatter of missing ratio vs unique ratio per column.
 def plot_overview_unique(df: pd.DataFrame, out_path: Path) -> None:
     n = len(df)
     uniq = df.nunique(dropna=True)
@@ -122,6 +136,7 @@ def plot_overview_unique(df: pd.DataFrame, out_path: Path) -> None:
     save_fig(out_path)
 
 
+# Overview chart: distribution of duplicate group sizes for a composite key.
 def plot_key_duplicates(df: pd.DataFrame, keys: list[str], out_path: Path) -> None:
     keys = [k for k in keys if k in df.columns]
     if not keys:
@@ -140,6 +155,7 @@ def plot_key_duplicates(df: pd.DataFrame, keys: list[str], out_path: Path) -> No
     save_fig(out_path)
 
 
+# Overview charts: parsed EUR histogram, sorted dot plot, and tier counts.
 def plot_price_visuals(df: pd.DataFrame, out_dir: Path) -> None:
     if "misc_price" not in df.columns:
         return
@@ -147,7 +163,6 @@ def plot_price_visuals(df: pd.DataFrame, out_dir: Path) -> None:
     if len(price_eur) == 0:
         return
 
-    # Histogram
     plt.figure(figsize=(12, 5))
     plt.hist(price_eur.values, bins=60, edgecolor="black", alpha=0.8)
     plt.title("Price distribution (EUR parsed from misc_price)")
@@ -155,7 +170,6 @@ def plot_price_visuals(df: pd.DataFrame, out_dir: Path) -> None:
     plt.ylabel("count")
     save_fig(out_dir / "price_histogram.png")
 
-    # Dot plot (sorted values)
     sorted_vals = np.sort(price_eur.values)
     plt.figure(figsize=(12, 5))
     plt.plot(np.arange(len(sorted_vals)), sorted_vals, ".", alpha=0.6)
@@ -164,7 +178,7 @@ def plot_price_visuals(df: pd.DataFrame, out_dir: Path) -> None:
     plt.ylabel("price_eur")
     save_fig(out_dir / "price_dotplot_sorted.png")
 
-    # Tier counts
+    # Tier bins mirror preprocessing: budget / mid_range / premium / flagship.
     tier = pd.cut(
         price_eur,
         bins=[0, 150, 400, 800, np.inf],
@@ -180,6 +194,7 @@ def plot_price_visuals(df: pd.DataFrame, out_dir: Path) -> None:
     save_fig(out_dir / "price_tier_counts.png")
 
 
+# Per-column figure: missing count, unique ratio, and value distribution.
 def plot_column_visual(df: pd.DataFrame, column: str, out_dir: Path, top_k: int) -> None:
     s = df[column]
     missing = int(s.isna().sum())
@@ -190,18 +205,14 @@ def plot_column_visual(df: pd.DataFrame, column: str, out_dir: Path, top_k: int)
     fig, axes = plt.subplots(1, 3, figsize=(15, 4))
     fig.suptitle(column, fontsize=12)
 
-    # Panel 1: missing/non-missing
     axes[0].bar(["non_missing", "missing"], [non_missing, missing], color=["#4c78a8", "#f58518"])
     axes[0].set_title("Missing count")
     axes[0].tick_params(axis="x", rotation=20)
 
-    # Panel 2: unique ratio
     axes[1].bar(["unique_ratio"], [uniq_ratio], color=["#54a24b"])
     axes[1].set_ylim(0, 1.0)
     axes[1].set_title("Unique ratio among non-missing")
 
-    # Panel 3: distribution
-    # Try numeric conversion
     numeric = pd.to_numeric(s.astype(str).str.replace(",", "", regex=False), errors="coerce")
     numeric_non_na = numeric.dropna()
     if len(numeric_non_na) >= max(50, int(0.3 * non_missing)):
@@ -223,6 +234,7 @@ def plot_column_visual(df: pd.DataFrame, column: str, out_dir: Path, top_k: int)
     save_fig(out_dir / f"{clean_name(column)}.png")
 
 
+# Write a short markdown index of generated inspection artifacts.
 def write_summary(df: pd.DataFrame, out_dir: Path, input_path: Path) -> None:
     n_rows, n_cols = df.shape
     summary_path = out_dir / "SUMMARY.md"
@@ -242,6 +254,7 @@ def write_summary(df: pd.DataFrame, out_dir: Path, input_path: Path) -> None:
         f.write("  - `columns/*.png` (all columns)\n")
 
 
+# Write a markdown table with missing/unique stats for every raw column.
 def write_column_description(df: pd.DataFrame, out_dir: Path) -> None:
     n = len(df)
     path = out_dir / "COLUMN_DESCRIPTION.md"
@@ -261,6 +274,7 @@ def write_column_description(df: pd.DataFrame, out_dir: Path) -> None:
             )
 
 
+# CLI entry point: load raw GSM data and export all inspection images.
 def main() -> None:
     parser = argparse.ArgumentParser(description="Human-friendly GSM inspection with images only.")
     parser.add_argument("--input", type=str, default=str(DEFAULT_INPUT), help="Path to original gsm.csv")
@@ -288,18 +302,15 @@ def main() -> None:
     df = normalize_missing(df_raw)
     print(f"[INFO] Loaded shape: {df.shape}")
 
-    # Text outputs (only two files)
     write_summary(df, out_dir, input_path)
     write_column_description(df, out_dir)
 
-    # Overview visuals
     plot_overview_missing(df, overview_dir / "missing_ratio_all_columns.png")
     plot_overview_unique(df, overview_dir / "missing_vs_unique_scatter.png")
     plot_key_duplicates(df, ["oem", "model"], overview_dir / "duplicate_groups_oem_model.png")
     plot_key_duplicates(df, ["model"], overview_dir / "duplicate_groups_model.png")
     plot_price_visuals(df, overview_dir)
 
-    # Per-column visuals (all columns)
     for col in df.columns:
         plot_column_visual(df, col, columns_dir, top_k=args.top_k)
 
@@ -308,4 +319,3 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
-

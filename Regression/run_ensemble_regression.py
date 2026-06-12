@@ -1,11 +1,6 @@
-"""
-Ensemble regression for smartphone price (target_price_eur).
-
-Usage (from repo root):
-  py Regression/run_ensemble_regression.py
-  py Regression/run_ensemble_regression.py --device gpu
-  py Regression/run_ensemble_regression.py --device cpu --target-mode log
-"""
+# Module: run_ensemble_regression
+# Purpose: Train stacking and weighted-blend ensembles for target_price_eur.
+# Usage: py Regression/run_ensemble_regression.py [--device auto|gpu|cpu] [--target-mode log_price_eur]
 
 from __future__ import annotations
 
@@ -47,11 +42,13 @@ from evaluation import evaluate_regression  # noqa: E402
 from gpu import resolve_device  # noqa: E402
 
 
+# Create output folders for metrics, models, and plots.
 def ensure_dirs() -> None:
     for path in (OUTPUT_DIR, MODEL_DIR, PLOT_DIR):
         path.mkdir(parents=True, exist_ok=True)
 
 
+# Load encoded price-prediction features and drop leakage-prone columns if present.
 def load_dataset() -> tuple[pd.DataFrame, pd.Series]:
     path = CONTENT_DIR / PRICE_MODEL_CSV
     if not path.exists():
@@ -69,6 +66,7 @@ def load_dataset() -> tuple[pd.DataFrame, pd.Series]:
     return X, y
 
 
+# Convert EUR targets to log space when training on skewed prices.
 def transform_target(y: np.ndarray, mode: str) -> np.ndarray:
     if mode == "log_price_eur":
         return np.log1p(y)
@@ -77,12 +75,14 @@ def transform_target(y: np.ndarray, mode: str) -> np.ndarray:
     raise ValueError("target_mode must be price_eur or log_price_eur")
 
 
+# Map model predictions back to EUR for evaluation and blending.
 def inverse_transform(pred: np.ndarray, mode: str) -> np.ndarray:
     if mode == "log_price_eur":
         return np.expm1(pred)
     return pred
 
 
+# Package one holdout metric row for a single model or ensemble.
 def evaluate_holdout(
     name: str,
     y_test: np.ndarray,
@@ -96,6 +96,7 @@ def evaluate_holdout(
     return row
 
 
+# Out-of-fold MAE in EUR; used to weight base models in the blend.
 def cv_mae_eur(
     estimator: Any,
     X: pd.DataFrame,
@@ -103,7 +104,6 @@ def cv_mae_eur(
     target_mode: str,
     folds: int,
 ) -> float:
-    """Out-of-fold MAE in EUR for weighting base models."""
     kfold = KFold(n_splits=folds, shuffle=True, random_state=RANDOM_STATE)
     oof = np.zeros(len(y))
     y_train = transform_target(y, target_mode)
@@ -117,6 +117,7 @@ def cv_mae_eur(
     return float(np.mean(np.abs(y - oof)))
 
 
+# Fit each base model and compute inverse-CV-MAE blend weights.
 def fit_weighted_blend(
     estimators: list[tuple[str, Any]],
     X_train: pd.DataFrame,
@@ -124,7 +125,6 @@ def fit_weighted_blend(
     target_mode: str,
     folds: int,
 ) -> tuple[dict[str, float], dict[str, Any]]:
-    """Inverse-CV-MAE weights + fitted base models."""
     weights: dict[str, float] = {}
     fitted: dict[str, Any] = {}
     y_t = transform_target(y_train, target_mode)
@@ -141,6 +141,7 @@ def fit_weighted_blend(
     return weights, fitted
 
 
+# Weighted average of fitted base-model predictions in EUR space.
 def predict_weighted_blend(
     fitted: dict[str, Any],
     weights: dict[str, float],
@@ -154,6 +155,7 @@ def predict_weighted_blend(
     return pred
 
 
+# Bar chart of holdout MAE for all trained models and ensembles.
 def plot_metrics(metrics: pd.DataFrame, out_path: Path) -> None:
     plot_df = metrics.sort_values("MAE").copy()
     plt.figure(figsize=(10, 5))
@@ -165,6 +167,7 @@ def plot_metrics(metrics: pd.DataFrame, out_path: Path) -> None:
     plt.close()
 
 
+# CLI entry: train base models, stacking, weighted blend, and save artifacts.
 def main() -> None:
     parser = argparse.ArgumentParser(description="GSM price ensemble regression")
     parser.add_argument("--device", choices=["auto", "gpu", "cpu"], default="auto")
@@ -199,7 +202,6 @@ def main() -> None:
     fitted_singletons: dict[str, Any] = {}
     y_train_t = transform_target(y_train, args.target_mode)
 
-    # --- Single base models ---
     for name, est in base_estimators:
         t0 = time.time()
         model = clone(est)
@@ -216,7 +218,6 @@ def main() -> None:
         )
         fitted_singletons[name] = model
 
-    # --- Stacking (Ridge meta-learner) ---
     stack_estimators = [(n, clone(e)) for n, e in base_estimators]
     stack = StackingRegressor(
         estimators=stack_estimators,
@@ -242,7 +243,6 @@ def main() -> None:
         )
     )
 
-    # --- Weighted blend (inverse CV-MAE) ---
     t0 = time.time()
     blend_weights, blend_fitted = fit_weighted_blend(
         base_estimators, X_train, y_train, args.target_mode, args.cv_folds

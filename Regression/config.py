@@ -1,4 +1,5 @@
-"""Paths and defaults for the Regression ensemble workspace."""
+# Module: config
+# Purpose: Paths, split defaults, and leakage-column guards for the Regression ensemble workspace.
 
 from pathlib import Path
 
@@ -16,7 +17,7 @@ CONTENT_DIR = ROOT_DIR / "content"
 PRICE_MODEL_CSV = "gsm_processed_all(price_prediction).csv"
 TARGET_COL = "target_price_eur"
 
-# Leakage-prone columns already excluded in preprocessing export; kept for safety checks.
+# Columns that must never enter price regression features.
 LEAKAGE_COLS = {
     "price_tier",
     "value_score",

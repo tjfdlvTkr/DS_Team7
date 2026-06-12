@@ -1,4 +1,5 @@
-"""Base regressors for ensemble (GPU-aware when available)."""
+# Module: base_models
+# Purpose: Factory functions for ensemble base regressors (CPU/GPU aware).
 
 from __future__ import annotations
 
@@ -12,10 +13,12 @@ from gpu import DevicePlan
 RANDOM_STATE = 42
 
 
+# Linear Ridge baseline for stacking and quick benchmarking.
 def make_ridge() -> Ridge:
     return Ridge(alpha=1.0, random_state=RANDOM_STATE)
 
 
+# Bagged tree ensemble base model.
 def make_random_forest() -> RandomForestRegressor:
     return RandomForestRegressor(
         n_estimators=300,
@@ -26,6 +29,7 @@ def make_random_forest() -> RandomForestRegressor:
     )
 
 
+# CPU-only fallback when LightGBM is unavailable.
 def make_hist_gradient_boosting() -> HistGradientBoostingRegressor:
     return HistGradientBoostingRegressor(
         learning_rate=0.05,
@@ -35,6 +39,7 @@ def make_hist_gradient_boosting() -> HistGradientBoostingRegressor:
     )
 
 
+# Primary gradient boosting model; device comes from DevicePlan.
 def make_lightgbm(plan: DevicePlan) -> Any:
     try:
         from lightgbm import LGBMRegressor
@@ -58,6 +63,7 @@ def make_lightgbm(plan: DevicePlan) -> Any:
     return LGBMRegressor(**params)
 
 
+# Optional XGBoost base model; returns None when the package is not installed.
 def make_xgboost(plan: DevicePlan) -> Any | None:
     try:
         from xgboost import XGBRegressor
@@ -80,6 +86,7 @@ def make_xgboost(plan: DevicePlan) -> Any | None:
     return XGBRegressor(**params)
 
 
+# Optional CatBoost base model; returns None when the package is not installed.
 def make_catboost(plan: DevicePlan) -> Any | None:
     try:
         from catboost import CatBoostRegressor
@@ -102,8 +109,8 @@ def make_catboost(plan: DevicePlan) -> Any | None:
     return CatBoostRegressor(**params)
 
 
+# Build the ordered list of (name, estimator) pairs used by stacking and blending.
 def build_base_estimators(plan: DevicePlan) -> list[tuple[str, Any]]:
-    """Return (name, estimator) pairs for stacking."""
     estimators: list[tuple[str, Any]] = [
         ("ridge", make_ridge()),
         ("random_forest", make_random_forest()),
